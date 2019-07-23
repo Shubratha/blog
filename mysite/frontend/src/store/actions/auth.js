@@ -50,7 +50,7 @@ export const checkAuthTimeout = expTime => {
 export const authLogin = (username, password) => {
     return dispatch => {
         dispatch(authStart());
-        Axios.post('http://127.0.0.1:8000/login', {
+        Axios.post('http://127.0.0.1:8000/rest-auth/login/', {
             username: username,
             password: password
         })
@@ -71,12 +71,12 @@ export const authLogin = (username, password) => {
 export const authSignUp = (username, email, password1, password2, role) => {
     return dispatch => {
         dispatch(authStart());
-        Axios.post('http://127.0.0.1:8000/login', {
+        Axios.post('http://127.0.0.1:8000/rest-auth/registration/', {
             username: username,
             email: email,
             password1: password1,
             password2: password2,
-            role: role
+            // role: role
         })
         .then(res => {
             const token = res.data.key;

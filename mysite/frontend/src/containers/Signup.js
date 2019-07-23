@@ -24,7 +24,7 @@ import {
       e.preventDefault();
       this.props.form.validateFieldsAndScroll((err, values) => {
         if (!err) {
-            this.props.onAuth(values.userName, values.email, values.password, values.confirm, values.role)
+            this.props.onAuth(values.username, values.email, values.password, values.confirm, values.role)
         //   console.log('Received values of form: ', values);
         }
         this.props.history.push('/');
@@ -64,16 +64,6 @@ import {
   
     render() {
       const { getFieldDecorator } = this.props.form;
-
-      const roleSelector = getFieldDecorator('prefix', {
-        initialValue: '1',
-      })(
-        <Select style={{ width: 70 }}>
-          <Option value="1">Admin</Option>
-          <Option value="2">New User</Option>
-        </Select>,
-      );
-  
   
       return (
         <Form onSubmit={this.handleSubmit}>
@@ -105,7 +95,14 @@ import {
               ],
             })(<Input />)}
           </Form.Item>
-          <Form.Item label="Password" hasFeedback>
+          <Form.Item label={
+              <span>
+                Password&nbsp;
+                <Tooltip title="Avoid common passwords. Go for a strong one.">
+                  <Icon type="question-circle-o" />
+                </Tooltip>
+              </span>
+            } hasFeedback>
             {getFieldDecorator('password', {
               rules: [
                 {
