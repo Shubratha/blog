@@ -24,8 +24,7 @@ const Post = (props) => {
         <List.Item
             key={item.title}
             actions={[
-            <IconText type="star-o" text="156" />,
-            <IconText type="like-o" text="156" />,
+            <IconText type="like-o" text="12" />,
             <IconText type="message" text="2" />,
             ]}
             extra={

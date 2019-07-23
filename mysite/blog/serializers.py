@@ -3,12 +3,6 @@ from .models import Post
 from django.contrib.auth.models import User
 
 class PostSerializer(serializers.ModelSerializer):
-	# id = serializers.IntegerField(read_only=True)
-	# author = serializers.ReadOnlyField(source='user.username')
-	# title = models.CharField(max_length=200)
-	# slug = models.SlugField(max_length=200)
-	# content = models.TextField()
-
 	class Meta:
 		model = Post
 		fields = ('id','author','title','slug','content','status')

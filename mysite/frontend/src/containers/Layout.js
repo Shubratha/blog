@@ -3,7 +3,7 @@ import { Layout, Menu, Breadcrumb } from 'antd';
 import { Link } from 'react-router-dom';
 
 const { Header, Content, Footer } = Layout;
-const CustomLayout = (props) => {
+class CustomLayout = (props) => {
   return (
       <Layout className="layout">
         <Header>
@@ -12,11 +12,21 @@ const CustomLayout = (props) => {
             theme="dark"
             mode="horizontal"
             defaultSelectedKeys={['1']}
-            style={{ lineHeight: '64px' }}
+            style={{ lineHeight: '64px', 
+                      // textAlign: 'right' 
+                  }}
           >
-            <Menu.Item key="1"><Link to="/">Home</Link></Menu.Item>
-            <Menu.Item key="2"><Link to="/profile">Profile</Link></Menu.Item>
+            <Menu.Item key="1"><Link to="/">Dashboard</Link></Menu.Item>
+          { props.isAuthenticated ? 
+            // <Menu.Item key="2"><Link to="/profile">Profile</Link></Menu.Item>
+            <Menu.Item key="3"><Link to="/logout">Logout</Link></Menu.Item>
+            :
             <Menu.Item key="3"><Link to="/login">Login</Link></Menu.Item>
+          }
+            
+            
+
+          
           </Menu>
         </Header>
         <Content style={{ padding: '0 50px' }}>
