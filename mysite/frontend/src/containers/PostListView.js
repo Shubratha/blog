@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Post from '../components/Post';
+import CustomForm from '../components/Form';
 
 const listData = [];
 for (let i = 0; i < 23; i++) {
@@ -32,8 +33,13 @@ class PostList extends React.Component {
     }
 
     render() {
+        const {form} = this.props
         return (
-            <Post data={this.state.posts} />
+            <div>
+                <Post data={this.state.posts} />
+                <h2>Create a Post</h2>
+                <CustomForm request="post" postID={null} btnText="CREATE" form={form}/>
+            </div>
         )
     }
 }
