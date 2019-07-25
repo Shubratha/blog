@@ -21,7 +21,7 @@ class CustomForm extends React.Component {
     this.setState(
       {
         status: value,
-        author: 1
+        author: localStorage.getItem('user')
       })
   };
   handleFormSubmit = (e, request, postID) => {

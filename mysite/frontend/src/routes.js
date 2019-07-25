@@ -6,14 +6,14 @@ import Login from './containers/Login';
 import Signup from './containers/Signup';
 
 const BaseRouter = () => (
-    <BrowserRouter>
-        <div>
+    // <BrowserRouter>
+        <Switch>
             <Route exact path='/' component={PostList} />
-            <Route exact path='/posts/:postID' component={PostDetail} />
+            <Route exact path='/posts/:postID' component={PostDetail} />{" "}
             <Route exact path='/login' component={Login} />
             <Route exact path='/signup' component={Signup} />
-        </div>
-    </BrowserRouter> 
+        </Switch>
+    // {/* </BrowserRouter>  */}
 );
 
 export default BaseRouter;

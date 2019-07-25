@@ -15,21 +15,24 @@ class CustomLayout extends React.Component {
             theme="dark"
             mode="horizontal"
             defaultSelectedKeys={['1']}
-            style={{ lineHeight: '64px', 
-                      // textAlign: 'right' 
-                  }}
+            style={{
+              lineHeight: '64px',
+              // textAlign: 'right' 
+            }}
           >
-            <Menu.Item key="1"><Link to="/">Dashboard</Link></Menu.Item>
-          { this.props.isAuthenticated ? 
-            // <Menu.Item key="2"><Link to="/profile">Profile</Link></Menu.Item>
-            <Menu.Item key="3" onClick={this.props.logout}>Logout</Menu.Item>
-            :
-            <Menu.Item key="3"><Link to="/login">Login</Link></Menu.Item>
-          }
-            
-            
+            <Menu.Item id="1" key="1"><Link to="/">Dashboard</Link></Menu.Item>
+            {this.props.isAuthenticated ?
+              // <Menu.Item key="2"><Link to="/profile">Profile</Link></Menu.Item>
+              <Menu.Item id="2" key="3" onClick={actions.logout}>Logout</Menu.Item>
+              :
+              <Menu.Item id="3" key="3">
+                <Link to="/login">Login</Link> 
+              </Menu.Item>
+            }
 
-          
+
+
+
           </Menu>
         </Header>
         <Content style={{ padding: '0 50px' }}>
@@ -48,7 +51,7 @@ class CustomLayout extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-      onAuth: (username, email, password1, password2, role) => dispatch(actions.authSignUp(username, email, password1, password2, role))
+    onAuth: (username, email, password1, password2, role) => dispatch(actions.authSignUp(username, email, password1, password2, role))
   }
 }
 

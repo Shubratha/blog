@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import 'antd/dist/antd.css';
 import { connect } from 'react-redux';
 import BaseRouter from './routes';
-import {BrowserRouter as Router} from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import * as actions from './store/actions/auth';
 
 import CustomLayout from './containers/Layout';
@@ -16,14 +16,14 @@ class App extends Component {
 
   render() {
     return (
-    <div className="App">
-      <Router>
-        <CustomLayout {...this.props}>
-          <BaseRouter />
-        </CustomLayout>
-      </Router>
-    </div>
-  );
+      <div className="App">
+        <Router>
+          <CustomLayout {...this.props}>
+            <BaseRouter />
+          </CustomLayout>
+        </Router>
+      </div>
+    );
   }
 }
 

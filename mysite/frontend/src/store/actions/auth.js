@@ -8,10 +8,11 @@ export const authStart = () => {
     }
 }
 
-export const authSuccess = token => {
+export const authSuccess = (token, user) => {
     return {
         type: actionTypes.AUTH_SUCCESS,
-        token: token
+        token: token,
+        user: user
     }
 }
 
@@ -23,8 +24,9 @@ export const authFail = error => {
 }
 
 export const logout = () => {
-    localStorage.removeItem('user');
+    localStorage.removeItem('token');
     localStorage.removeItem('expirationDate');
+    localStorage.removeItem('user');
     return {
         type: actionTypes.AUTH_LOGOUT
     };
@@ -55,11 +57,14 @@ export const authLogin = (username, password) => {
             password: password
         })
         .then(res => {
+            console.log(res);
             const token = res.data.key;
+            const user = res.data.user;
             const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
             localStorage.setItem('token', token);
             localStorage.setItem('expirationDate', expirationDate);
-            dispatch(authSuccess(token));
+            localStorage.setItem('user',user);
+            dispatch(authSuccess(token, user));
             dispatch(checkAuthTimeout(3600));
         })
         .catch(err => {
@@ -79,11 +84,14 @@ export const authSignUp = (username, email, password1, password2, role) => {
             // role: role
         })
         .then(res => {
+            console.log(res);
+            const user = res.data.user;
             const token = res.data.key;
             const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
             localStorage.setItem('token', token);
             localStorage.setItem('expirationDate', expirationDate);
-            dispatch(authSuccess(token));
+            localStorage.setItem('user',user);
+            dispatch(authSuccess(token, user));
             dispatch(checkAuthTimeout(3600));
         })
         .catch(err => {
