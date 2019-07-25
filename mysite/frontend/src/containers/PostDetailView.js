@@ -4,6 +4,7 @@ import axios from 'axios';
 import { connect } from "react-redux";
 import { Button, Card } from 'antd';
 import CustomForm from '../components/Form';
+import CustomComment from '../components/Comment';
 
 class PostDetail extends React.Component {
 
@@ -40,6 +41,7 @@ class PostDetail extends React.Component {
                     <h5>Author: {this.state.post.author}</h5>
                     <p>{this.state.post.content}</p>
                 </Card>
+                <CustomComment author={this.state.post.author} />
                 <CustomForm request="put" postID={this.props.match.params.postID} btnText="UPDATE" />
                 <form onSubmit={this.handleDelete}>
                     <Button type="danger" htmlType="submit">DELETE</Button>

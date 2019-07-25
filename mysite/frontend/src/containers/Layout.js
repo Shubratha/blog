@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../store/actions/auth';
@@ -21,6 +21,10 @@ class CustomLayout extends React.Component {
             }}
           >
             <Menu.Item id="1" key="1"><Link to="/">Dashboard</Link></Menu.Item>
+            <Menu.Item key="2"><Link to="/profile"><span>
+                <Icon type="user" />
+                Profile
+              </span></Link></Menu.Item>
             {this.props.isAuthenticated ?
               // <Menu.Item key="2"><Link to="/profile">Profile</Link></Menu.Item>
               <Menu.Item id="2" key="3" onClick={actions.logout}>Logout</Menu.Item>
@@ -29,10 +33,6 @@ class CustomLayout extends React.Component {
                 <Link to="/login">Login</Link> 
               </Menu.Item>
             }
-
-
-
-
           </Menu>
         </Header>
         <Content style={{ padding: '0 50px' }}>

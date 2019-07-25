@@ -4,6 +4,7 @@ import PostList from './containers/PostListView';
 import PostDetail from './containers/PostDetailView';
 import Login from './containers/Login';
 import Signup from './containers/Signup';
+import Profile from './containers/Profile';
 
 const BaseRouter = () => (
     // <BrowserRouter>
@@ -12,6 +13,7 @@ const BaseRouter = () => (
             <Route exact path='/posts/:postID' component={PostDetail} />{" "}
             <Route exact path='/login' component={Login} />
             <Route exact path='/signup' component={Signup} />
+            <Route exact path='/profile' component={Profile} />
         </Switch>
     // {/* </BrowserRouter>  */}
 );
